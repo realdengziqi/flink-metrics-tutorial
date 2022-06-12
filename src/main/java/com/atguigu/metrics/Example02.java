@@ -73,7 +73,7 @@ public class Example02 {
                 .keyBy(data -> data.f0)
                 .sum("f1")
                 .print();
-        env.execute("Example02");
+        env.execute();
 
     }
 

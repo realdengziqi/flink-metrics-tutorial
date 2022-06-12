@@ -110,7 +110,7 @@ public class Example05 {
                 )
                 .print();
         // 5. 执行之
-        env.execute("Example06");
+        env.execute();
     }
 
 

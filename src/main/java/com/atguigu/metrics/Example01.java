@@ -49,6 +49,6 @@ public class Example01 {
                 .sum("f1")
                 .print();
         // 5. 执行之
-        env.execute("Example01");
+        env.execute();
     }
 }

@@ -69,7 +69,7 @@ public class Example_tmp {
                 .keyBy(data -> data.f0)
                 .sum("f1")
                 .print();
-        env.execute("Example03");
+        env.execute();
 
     }
 
