@@ -1,6 +1,5 @@
-package com.atguigu.metrics;
+package com.atguigu.metrics.examples;
 
-import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
@@ -11,21 +10,18 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 /**
  * <h4>FlinkMetricTutorial</h4>
- * <p>示例2，自定义counter,进行计数(并行度为1)</p>
+ * <p>示例4，多个重名的算子，</p>
  *
- * @author : raeldengziqi
- * @date : 2022-06-04 00:25
+ * @author : realdengziqi
+ * @date : 2022-06-05 03:34
  **/
-public class Example02 {
+public class Example_tmp {
     public static void main(String[] args) throws Exception {
         // 1. 创建一个执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        // 1.2 设置并行度为1
-        env.setParallelism(1);
 
         // 2. 指定nc的host和port
         ParameterTool parameterTool = ParameterTool.fromArgs(args);
@@ -52,7 +48,6 @@ public class Example02 {
                                 counter = getRuntimeContext()
                                         .getMetricGroup()
                                         .counter("outCounter");
-
                             }
 
                             @Override
@@ -70,6 +65,7 @@ public class Example02 {
                             }
                         }
                 )
+                .setParallelism(2)
                 .keyBy(data -> data.f0)
                 .sum("f1")
                 .print();

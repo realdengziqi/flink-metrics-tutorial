@@ -1,4 +1,4 @@
-package com.atguigu.metrics;
+package com.atguigu.metrics.examples;
 
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -13,12 +13,12 @@ import java.util.regex.Pattern;
 
 /**
  * <h4>FlinkMetricTutorial</h4>
- * <p>示例4，多个重名的算子，</p>
+ * <p>示例3，自定义counter,进行计数(flatmap的并行度设为2)</p>
  *
  * @author : realdengziqi
- * @date : 2022-06-05 03:34
+ * @date : 2022-06-04 00:44
  **/
-public class Example_tmp {
+public class Example03 {
     public static void main(String[] args) throws Exception {
         // 1. 创建一个执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
